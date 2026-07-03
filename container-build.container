@@ -1,0 +1,21 @@
+[Container]
+ContainerName=container-build
+Image=index.docker.io/node:24-trixie-slim
+Exec=sh -c "apt-get update && apt-get install -y --no-install-recommends git ca-certificates && \
+     git clone https://codeberg.org/forbiddenlake/uptime-kuma.git /tmp/repo && /tmp/repo/build.sh"
+Environment=REGISTRY=
+Environment=IMAGE=
+Environment=ACTOR=
+Environment=NO_COLOR=true
+Secret=REGISTRY_PACKAGE_RW,type=mount
+Volume=/etc/localtime:/etc/localtime:ro
+Tmpfs=/tmp
+LogDriver=journald
+NoNewPrivileges=true
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+
+[Unit]
+Description=

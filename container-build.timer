@@ -1,0 +1,11 @@
+[Unit]
+Description=Build container
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=Tue 04:17
+Persistent=true
+
+[Install]
+WantedBy=timers.target
