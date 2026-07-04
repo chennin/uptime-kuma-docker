@@ -1,0 +1,4 @@
+paths:
+  .{forgejo,github}/workflows/**/*.{yml,yaml}:
+    ignore:
+      - 'unexpected key "enable-email-notifications".*'
