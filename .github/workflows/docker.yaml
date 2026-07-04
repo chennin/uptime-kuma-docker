@@ -16,7 +16,7 @@ jobs:
       - name: Build OCI image
         env:
           ACTOR: ${{ github.actor }}
-          IMAGE: ${{ env.IMAGE_NAME }}
-          REGISTRY: ${{ env.REGISTRY }}
+          IMAGE: ${{ github.repository }}
+          REGISTRY: ghcr.io
           REGISTRY_PACKAGE_RW: ${{ secrets.GITHUB_TOKEN }}
         run: ./build.sh
