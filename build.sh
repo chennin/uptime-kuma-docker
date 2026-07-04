@@ -1,5 +1,7 @@
 #!/bin/bash
 export CONT_LATEST="${REGISTRY}/${IMAGE}"
+echo $CONT_LATEST
+exit
 export DEBIAN_FRONTEND=noninteractive
 export STORAGE_DRIVER=vfs
 export BUILDAH_ISOLATION=chroot
