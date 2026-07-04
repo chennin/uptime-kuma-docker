@@ -3,7 +3,6 @@ export CONT_LATEST="${REGISTRY}/${IMAGE}"
 export DEBIAN_FRONTEND=noninteractive
 export STORAGE_DRIVER=vfs
 export BUILDAH_ISOLATION=chroot
-export REGISTRY_PACKAGE_RW=$(</run/secrets/REGISTRY_PACKAGE_RW)
 cd $(dirname "$0")
 apt-get update && apt-get -y --no-install-recommends install git ca-certificates curl buildah netavark jq && \
 VERS=$(curl -fsm4 https://raw.githubusercontent.com/louislam/uptime-kuma-website/refs/heads/master/version.json | jq -r .latest) && \
