@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 export STORAGE_DRIVER=vfs
 export BUILDAH_ISOLATION=chroot
 cd $(dirname "$0")
-apt-get update && apt-get -y --no-install-recommends install git ca-certificates curl buildah netavark jq && \
+sudo apt-get update && apt-get -y --no-install-recommends install git ca-certificates curl buildah netavark jq && \
 VERS=$(curl -fsm4 https://raw.githubusercontent.com/louislam/uptime-kuma-website/refs/heads/master/version.json | jq -r .latest) && \
 git clone --depth=1  -c advice.detachedHead=false --single-branch --branch $VERS https://github.com/louislam/uptime-kuma.git && cd uptime-kuma && \
 npm config set min-release-age=7 && \
