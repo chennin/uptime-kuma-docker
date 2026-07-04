@@ -19,4 +19,4 @@ jobs:
           IMAGE: ${{ env.IMAGE_NAME }}
           REGISTRY: ${{ env.REGISTRY }}
           REGISTRY_PACKAGE_RW: ${{ secrets.GITHUB_TOKEN }}
-        run: build.sh
+        run: ./build.sh
