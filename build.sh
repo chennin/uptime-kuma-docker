@@ -3,11 +3,13 @@ export CONT_LATEST="${REGISTRY}/${IMAGE}"
 export DEBIAN_FRONTEND=noninteractive
 export STORAGE_DRIVER=vfs
 export BUILDAH_ISOLATION=chroot
+export NODE_DISABLE_COMPILE_CACHE=1
 
 cd $(dirname "$0")
 sudo apt-get update && sudo apt-get -y --no-install-recommends install git ca-certificates curl buildah netavark jq && \
 VERS=$(curl -fsm4 https://raw.githubusercontent.com/louislam/uptime-kuma-website/refs/heads/master/version.json | jq -r .latest) && \
 git clone --depth=1  -c advice.detachedHead=false --single-branch --branch $VERS https://github.com/louislam/uptime-kuma.git && cd uptime-kuma && \
+npm config --logs-max 0 set logs-max=0 && \
 npm config set min-release-age=7 && \
 sed -i -e 's@louislam/uptime-kuma:@@' -e 's/node:.*slim /node:24-trixie-slim /' docker/debian-base.dockerfile && \
 npm ci --omit dev --no-audit && npm run download-dist && \
