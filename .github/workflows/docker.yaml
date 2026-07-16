@@ -1,9 +1,9 @@
 on:
   workflow_dispatch:
   push:
-  schedule:
-    - cron: '07 19 * * 4'
-      timezone: "America/New_York"
+#  schedule:
+#    - cron: '07 19 * * 4'
+#      timezone: "America/New_York"
 jobs:
   container:
     runs-on: ubuntu-26.04
